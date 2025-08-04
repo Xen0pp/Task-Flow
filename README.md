@@ -193,6 +193,31 @@ npm start
 
 ## 🌐 Production Deployment
 
+### Full-Stack Deployment (Vercel) ⚡ - RECOMMENDED
+
+Deploy both frontend and backend to Vercel with serverless functions:
+
+#### Quick Deploy
+```bash
+# Run the deployment script
+./deploy.sh
+```
+
+#### Manual Steps
+1. **Set up MongoDB Atlas** (see MANUAL_DEPLOYMENT_GUIDE.md)
+2. **Push to GitHub**
+3. **Import to Vercel** from GitHub
+4. **Add Environment Variables** in Vercel dashboard:
+   ```
+   MONGODB_URI=your-atlas-connection-string
+   JWT_SECRET=your-secure-jwt-secret
+   NODE_ENV=production
+   CLIENT_URL=https://your-app.vercel.app
+   ```
+5. **Deploy** - Vercel handles both frontend and API routes
+
+📖 **Detailed Guide**: See `MANUAL_DEPLOYMENT_GUIDE.md` for complete instructions
+
 ### Backend Deployment (Railway) 🚂
 
 1. **Create Railway Account** at [railway.app](https://railway.app)
