@@ -1,0 +1,17 @@
+{
+  "name": "taskflow-pro-api",
+  "version": "1.0.0",
+  "description": "TaskFlow Pro API for Vercel Serverless Functions",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^5.1.0",
+    "mongoose": "^8.17.0",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.1",
+    "jsonwebtoken": "^9.0.2",
+    "bcryptjs": "^3.0.2"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
