@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
 import Login from './components/auth/Login';
@@ -7,10 +7,18 @@ import Dashboard from './components/Dashboard';
 import ErrorBoundary from './components/ErrorBoundary';
 import DebugInfo from './components/DebugInfo';
 import TestPage from './components/TestPage';
+import ExtensionConflictNotice from './components/ExtensionConflictNotice';
+import { initExtensionGuard } from './utils/extensionGuard';
 
 function App() {
+  // Initialize extension guard to prevent browser extension conflicts
+  useEffect(() => {
+    initExtensionGuard();
+  }, []);
+
   return (
     <ErrorBoundary>
+      <ExtensionConflictNotice />
       <AuthProvider>
         <Router>
           <Routes>
