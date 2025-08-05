@@ -29,12 +29,36 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "PORT=3000 react-scripts start",
-    "server": "node server/server.js",
-    "dev": "concurrently \"npm run server\" \"npm start\"",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "server": "node server/server.js",
+    "dev": "concurrently \"npm run server\" \"npm start\"",
+    "vercel-build": "npm run build",
+    "vercel-dev": "npm run dev",
+    "now-build": "npm run build"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "cacheDirectories": [
+    "node_modules",
+    "client/node_modules"
+  ],
+  "now": {
+    "version": 2,
+    "builds": [
+      { "src": "package.json", "use": "@vercel/node" },
+      { "src": "client/package.json", "use": "@vercel/static-build" }
+    ],
+    "routes": [
+      { "src": "/api/(.*)", "dest": "/api" },
+      { "src": "/static/(.*)", "dest": "/static/$1" },
+      { "src": "/favicon.ico", "dest": "/favicon.ico" },
+      { "src": "/manifest.json", "dest": "/manifest.json" },
+      { "src": "/(.*)", "dest": "/index.html" }
+    ]
   },
   "eslintConfig": {
     "extends": [
